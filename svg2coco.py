@@ -2,6 +2,7 @@
 
 import argparse
 from glob import glob
+import json
 from os.path import splitext, basename
 from xml.dom import minidom
 
@@ -210,6 +211,8 @@ def main():
         'type':'',
         'licenses': '',
         'info': ''}
+    
+    json.dump(coco, file, indent=4, encoding='utf8')
 
 if __name__ == "__main__":
     main()
