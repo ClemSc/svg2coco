@@ -17,7 +17,7 @@ Just specify the input directory with -i/--input_dir and redirect the output (CO
 The input directory needs to contain the set of svg containing your annotations. Each \<path> from all svg will be 
 selected and converted to an annotation. Images name is infered from the svg file names: mypict.svg --> pypict.jpg. Mind that if your images have a different extension than "jpg", you will want to adjust this.
 
-The hexadecimal color code will be used as category_name. Its up to the user to manage this somehow :).
+The hexadecimal code of the stroke color of the path will be used as category_name. Its up to the user to manage this somehow :).
 The 'iscrowd' field default to zero (I don't need it). If you are interested in it, it could be easily encoded using another svg path property such as stroke style, fill color or something else. Then it is 2 lines of code to add.
 
 
