@@ -1,7 +1,7 @@
 # svg2coco
 Convert an SVG file into annotations in COCO format (JSON). Use your favorite vectoral drawing tool (actually, only Inkscape and Concept currently, hehehe...) to create your computer vision training set.
 
-Currently experimental. Please don't use it for production. Safer would be to regularly your COCO annotations with another software. I am a biologist, not a developper. Ideas and contributors are welcome !
+Currently experimental. Please don't use it for production. Safer would be to regularly check your COCO annotations with another software. I am a biologist, not a developper. Ideas and contributors are welcome !
 
 ## Python dependencies
 Requires Python 3.
