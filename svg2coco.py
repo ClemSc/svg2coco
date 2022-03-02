@@ -11,10 +11,6 @@ def get_arguments():
 
     parser.add_argument("-i", "--input_dir", 
                         help="""Input directory for inference.""")
-
-    parser.add_argument("-o", "--output_dir", 
-                        help="""Output directory for inference."""
-    )
     
     return parser.parse_args()
 
@@ -58,16 +54,16 @@ def d_qbezier_to_straight_path(path_d):
             Concept (tested on Android).
     Output: is the list of absolute points of this path.
     """
-    d_path2 = list()
-    for i in allpath[0].getAttribute('d').split(' '):
+    path_d2 = list()
+    for i in path_d.split(' '):
         try:
-            d_path2.append(float(i))
+            path_d2.append(float(i))
         except:
             pass
     
     points = list()
-    for i in range(0, len(d_path2), 4):
-        points.append([d_path2[i], d_path2[i+1]])    
+    for i in range(0, len(path_d2), 4):
+        points.append([path_d2[i], path_d2[i+1]])    
     return points
 
 def relative_path_to_absolute(points):   
@@ -121,13 +117,13 @@ def main():
         # Svg viewBox
         viewBox = psvgf.getElementsByTagName('svg')[0].getAttribute('viewBox')
         viewBox = [float(n) for n in viewBox.split(' ')]
-        viewBox_W, viewBox_H = viewBox[2] - viewBox[0], viewBox[3] - viewBox[1]
+        viewBox_W, viewBox_H = viewBox[2], viewBox[3]
         
         # Image original width and height
-        width = doc.getElementsByTagName('svg')[0].getAttribute('width')
-        width = int(float(W.replace('px', '')))
-        height = doc.getElementsByTagName('svg')[0].getAttribute('height').replace('px', '')
-        height = int(float(H.replace('px', '')))
+        width = psvgf.getElementsByTagName('svg')[0].getAttribute('width')
+        width = int(float(width.replace('px', '')))
+        height = psvgf.getElementsByTagName('svg')[0].getAttribute('height').replace('px', '')
+        height = int(float(height.replace('px', '')))
 
         # Scale ratio of the viewBox/original image
         W_ratio = width / viewBox_W
@@ -142,7 +138,7 @@ def main():
                       })
         
         # Collect all paths
-        allpath = [path for path in doc.getElementsByTagName('path')]
+        allpath = [path for path in psvgf.getElementsByTagName('path')]
 
         for path in allpath:
             
@@ -212,7 +208,9 @@ def main():
         'licenses': '',
         'info': ''}
     
-    json.dump(coco, file, indent=4, encoding='utf8')
+    print(json.dumps(coco, indent=4))
+    
+    return coco
 
 if __name__ == "__main__":
     main()
