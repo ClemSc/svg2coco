@@ -27,7 +27,7 @@ The 'iscrowd' field default to zero (I don't need it). If you are interested in 
 
 
 ## Features and limitations
-- Currently, look only for SVG paths and convert them in COCO path and bbox (being the smallest retangle that encompass the path). Other SVG element such as rect or circle are disregarded.
+- Currently, svg2coco looks only for SVG paths and convert them in COCO path and bbox (being the smallest retangle that encompass the path). Other SVG element such as rect or circle are disregarded.
 
 - SVG paths needs to be in the exact expected formats (empirically observed from paths produced with Inkscape's free-hand tool and straight line tool, and with Concept's pen tool.
 
